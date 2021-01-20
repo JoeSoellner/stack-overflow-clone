@@ -1,0 +1,27 @@
+{
+	"extends": [
+		"airbnb",
+		"plugin:prettier/recommended",
+		"prettier/react"
+	],
+	"plugins": ["prettier"],
+	"env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jest": true
+	  },
+	"rules": {
+        "jsx-a11y/href-no-hash": ["off"],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+		"prettier/prettier": ["error", {
+			"endOfLine":"auto",
+			"singleQuote": true,
+			"useTabs": true,
+			"tabWidth": 4,
+			"trailingComma": "none",
+			"printWidth": 80
+		}],
+		"no-console": 0
+	}
+}
