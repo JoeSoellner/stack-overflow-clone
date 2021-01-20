@@ -1,0 +1,24 @@
+{
+	"extends": [
+		"airbnb",
+		"plugin:prettier/recommended",
+		"prettier/react"
+	],
+	"plugins": ["prettier"],
+	"env": {
+		"es6": true,
+		"jest": true,
+		"node": true
+	  },
+	"rules": {
+		"prettier/prettier": ["error", {
+			"endOfLine":"auto",
+			"singleQuote": true,
+			"useTabs": true,
+			"tabWidth": 4,
+			"trailingComma": "none",
+			"printWidth": 80
+		}],
+		"no-console": 0
+	}
+}
