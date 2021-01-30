@@ -22,4 +22,30 @@ questionsRouter.post('/', async (request, response) => {
 	response.status(201).json(savedQuestion);
 });
 
+questionsRouter.delete('/:id', async (request, response) => {
+	await Question.findByIdAndRemove(request.params.id);
+	response.status(204).end();
+});
+
+questionsRouter.put('/:id', async (request, response) => {
+	const { body } = request;
+
+	const question = {
+		title: body.title,
+		likes: body.likes,
+		content: body.content,
+		views: body.views,
+		tags: body.tags
+	};
+
+	const updatedQuestion = await Question.findByIdAndUpdate(
+		request.params.id,
+		question,
+		{
+			new: true
+		}
+	);
+	response.json(updatedQuestion);
+});
+
 module.exports = questionsRouter;
