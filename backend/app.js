@@ -1,3 +1,4 @@
+require('express-async-errors');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -7,6 +8,7 @@ const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
 
 const app = express();
+
 mongoose
 	.connect(config.MONGODB_URI, {
 		useNewUrlParser: true,
