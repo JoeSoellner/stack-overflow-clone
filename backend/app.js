@@ -1,12 +1,12 @@
-require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const questionsRouter = require('./controllers/questions');
+const config = require('./utils/config');
 
 const app = express();
 mongoose
-	.connect(process.env.MONGODB_URI, {
+	.connect(config.MONGODB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
