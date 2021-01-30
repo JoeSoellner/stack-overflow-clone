@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const questionsRouter = require('./controllers/questions');
 const config = require('./utils/config');
+const logger = require('./utils/logger');
 
 const app = express();
 mongoose
@@ -13,10 +14,10 @@ mongoose
 		useCreateIndex: true
 	})
 	.then(() => {
-		console.log('connected to MongoDB');
+		logger.info('connected to MongoDB');
 	})
 	.catch((error) => {
-		console.log('error connecting to MongoDB:', error.message);
+		logger.error('error connecting to MongoDB:', error.message);
 	});
 
 app.use(cors());
