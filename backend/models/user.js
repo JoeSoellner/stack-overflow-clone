@@ -3,36 +3,37 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-const questionSchema = new mongoose.Schema({
-	title: {
+const userSchema = new mongoose.Schema({
+	username: {
 		type: String,
-		minlength: 10,
+		minlength: 3,
 		required: true,
 		unique: true
 	},
-	likes: Number,
-	content: {
+	passwordHash: {
 		type: String,
-		minlength: 10,
+		minlength: 6,
 		required: true
 	},
-	views: Number,
-	date: Date,
-	tags: [String],
-	user: {
-		type: mongoose.Types.ObjectId,
-		ref: 'User'
-	}
+	name: String,
+	joinDate: Date,
+	questions: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Question'
+		}
+	]
 });
 
-questionSchema.plugin(uniqueValidator);
+userSchema.plugin(uniqueValidator);
 
-questionSchema.set('toJSON', {
+userSchema.set('toJSON', {
 	transform: (document, returnedObject) => {
 		returnedObject.id = returnedObject._id.toString();
 		delete returnedObject._id;
 		delete returnedObject.__v;
+		delete returnedObject.passwordHash;
 	}
 });
 
-module.exports = mongoose.model('Question', questionSchema);
+module.exports = mongoose.model('User', userSchema);
