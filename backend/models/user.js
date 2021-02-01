@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
 		required: true
 	},
 	name: String,
-	joinDate: Date,
+	creationDate: Date,
 	questions: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
